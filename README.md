@@ -1,1 +1,1262 @@
-hi
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🕵️ Heat Detective Mission - Classroom Activity</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Comic Sans MS', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(90deg, #4a90d9, #6c5ce7);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .mascot {
+            font-size: 4em;
+            display: block;
+            margin: 10px 0;
+        }
+        
+        .read-aloud-banner {
+            background: #fdcb6e;
+            color: #2d3436;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .speak-btn {
+            background: #6c5ce7;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .speak-btn:hover {
+            background: #5a4ad1;
+        }
+        
+        nav {
+            background: #2d3436;
+            padding: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        nav a {
+            background: #00b894;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, background 0.3s;
+        }
+        
+        nav a:hover {
+            transform: scale(1.05);
+            background: #00cec9;
+        }
+        
+        nav a.important {
+            background: #e17055;
+        }
+        
+        .section {
+            padding: 30px;
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h2 {
+            color: #2d3436;
+            border-bottom: 3px solid #fdcb6e;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        h3 {
+            color: #6c5ce7;
+            margin: 20px 0 10px;
+            font-size: 1.4em;
+        }
+        
+        .group-box {
+            background: #74b9ff;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        
+        .group-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+        
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .role-card {
+            background: white;
+            color: #2d3436;
+            padding: 15px;
+            border-radius: 12px;
+            border-left: 5px solid #0984e3;
+        }
+        
+        .role-card h4 {
+            color: #0984e3;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .role-card p {
+            font-size: 0.95em;
+        }
+        
+        .big-idea {
+            background: #ffeaa7;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #fdcb6e;
+            margin: 20px 0;
+            font-size: 1.3em;
+        }
+        
+        .objective {
+            background: #74b9ff;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .materials-box {
+            background: #55efc4;
+            padding: 20px;
+            border-radius: 15px;
+        }
+        
+        .materials-box ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        
+        .materials-box li {
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .emoji {
+            font-size: 1.5em;
+        }
+        
+        .safety-box {
+            background: #ff7675;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        
+        .safety-box ol {
+            margin-left: 20px;
+        }
+        
+        .safety-box li {
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        
+        .teacher-demo-box {
+            background: #a29bfe;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        
+        .teacher-demo-box h3 {
+            color: white;
+        }
+        
+        .demo-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .demo-step {
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .demo-step .icon {
+            font-size: 2.5em;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .support-box {
+            background: #fab1a0;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        
+        .support-box h3 {
+            color: #e17055;
+        }
+        
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        
+        .support-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid;
+        }
+        
+        .support-card.visual {
+            border-color: #74b9ff;
+        }
+        
+        .support-card.auditory {
+            border-color: #00cec9;
+        }
+        
+        .support-card.tactile {
+            border-color: #fdcb6e;
+        }
+        
+        .support-card h4 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        
+        .accommodations {
+            background: #a29bfe;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        
+        .accommodations ul {
+            list-style: none;
+        }
+        
+        .accommodations li {
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 8px;
+        }
+        
+        .step {
+            background: #f1f2f6;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border-left: 4px solid #0984e3;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .student-action {
+            background: #00b894;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .teacher-action {
+            background: #e17055;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .step-number {
+            background: #0984e3;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .data-table th, .data-table td {
+            border: 2px solid #2d3436;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.1em;
+        }
+        
+        .data-table th {
+            background: #6c5ce7;
+            color: white;
+        }
+        
+        .data-table tr:nth-child(even) {
+            background: #dfe6e9;
+        }
+        
+        .group-table th {
+            background: #0984e3;
+        }
+        
+        .symbol-key {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .symbol {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 1.2em;
+        }
+        
+        .real-world {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .example-card {
+            background: white;
+            border: 3px solid #fdcb6e;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .example-card h4 {
+            color: #e17055;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .example-card .icon {
+            font-size: 3em;
+            margin: 10px 0;
+        }
+        
+        .icon-large {
+            font-size: 5em;
+            text-align: center;
+            display: block;
+            margin: 20px 0;
+        }
+        
+        .info-box {
+            background: #81ecec;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #00cec9;
+        }
+        
+        .warning {
+            background: #fab1a0;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .timer-display {
+            font-size: 3em;
+            text-align: center;
+            background: #2d3436;
+            color: #00cec9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-family: monospace;
+        }
+        
+        .btn {
+            background: #00b894;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+            background: #00cec9;
+        }
+        
+        .btn-danger {
+            background: #ff7675;
+        }
+        
+        .btn-start {
+            background: #fdcb6e;
+            color: #2d3436;
+        }
+        
+        .visual-instructions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .visual-step {
+            background: white;
+            border: 3px solid #74b9ff;
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .visual-step .pic {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        
+        .tactile-sample {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        
+        .tactile-item {
+            text-align: center;
+            padding: 20px;
+            border-radius: 15px;
+            width: 150px;
+        }
+        
+        .tactile-item.metal {
+            background: linear-gradient(135deg, #b2bec3, #636e72);
+            color: white;
+        }
+        
+        .tactile-item.wood {
+            background: linear-gradient(135deg, #dfe6e9, #b2bec3);
+            color: #2d3436;
+        }
+        
+        .tactile-item.plastic {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+        }
+        
+        .tactile-item .icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .alert-box {
+            background: #ffeaa7;
+            border: 3px solid #fdcb6e;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        
+        footer {
+            background: #2d3436;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        @media print {
+            body { background: white; }
+            .container { box-shadow: none; }
+            nav { display: none; }
+        }
+        
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.8em; }
+            .section { padding: 15px; }
+            .data-table { font-size: 0.9em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <span class="mascot">🔥🔍</span>
+            <h1>🕵️ Heat Detective Mission 🕵️‍♀️</h1>
+            <p>Guided Classroom Activity - Grade 4 Science</p>
+            <p style="font-size:1em; margin-top:10px;">Conduction Investigation - Group Work Edition!</p>
+        </header>
+        
+        <div class="read-aloud-banner">
+            <span>🔊 For students with visual challenges:</span>
+            <button class="speak-btn" onclick="speakText('intro')">📖 Read This Page</button>
+            <button class="speak-btn" onclick="speakSection('intro')">📖 Read All</button>
+            <button class="speak-btn" onclick="stopSpeaking()">⏹️ Stop</button>
+        </div>
+        
+        <nav>
+            <a href="#" onclick="showSection('intro')">📖 Mission Intro</a>
+            <a href="#" onclick="showSection('groups')">👥 Team Roles</a>
+            <a href="#" onclick="showSection('demo')">🎬 Teacher Demo</a>
+            <a href="#" onclick="showSection('safety')">⚠️ Safety</a>
+            <a href="#" onclick="showSection('experiment')">🧪 Experiment</a>
+            <a href="#" onclick="showSection('data')">📊 Data Recording</a>
+            <a href="#" onclick="showSection('supports')">♿ Supports</a>
+        </nav>
+        
+        <!-- MISSION INTRO -->
+        <div id="intro" class="section active">
+            <h2>🔎 Welcome, Heat Detectives!</h2>
+            
+            <div class="big-idea">
+                <strong>🔬 BIG IDEA:</strong><br>
+                Different materials conduct heat at different rates!
+            </div>
+            
+            <div class="objective">
+                <strong>🎯 OUR CLASSROOM MISSION:</strong><br>
+                Work together in teams to compare heat transfer along spoons made of different materials (metal, wood, and plastic)
+            </div>
+            
+            <div class="info-box">
+                <h3>📌 What's Different About This Activity?</h3>
+                <ul style="margin-left:20px; margin-top:10px;">
+                    <li>🤝 <strong>TEAM WORK</strong> - Everyone has a job to do!</li>
+                    <li>👀 <strong>YOU do the work</strong> - Students measure butter and handle timers</li>
+                    <li>⏱️ <strong>You start the timer</strong> - Not the teacher!</li>
+                    <li>📝 <strong>You record the data</strong> - In your team's table</li>
+                    <li>🌡️ <strong>You check the temperature</strong> - Every 2 minutes!</li>
+                </ul>
+            </div>
+            
+            <span class="icon-large">🥄🥄🥄 + 👥👥👥 = 🔬</span>
+            
+            <h3>🎮 Today's Activity</h3>
+            <p style="font-size:1.2em; margin:15px 0;">We will work in GROUPS to put butter on different spoons, start timers, and see which one melts the butter fastest! The faster the butter melts = the better that material conducts heat!</p>
+            
+            <div class="info-box">
+                <strong>🤖 Heat Bot Says:</strong><br>
+                "Metal is like a highway for heat - it moves SUPER fast! Wood is like a slow path - heat takes its time. Plastic is in the middle!"
+            </div>
+        </div>
+        
+        <!-- TEAM ROLES -->
+        <div id="groups" class="section">
+            <h2>👥 Team Roles - Who Does What?</h2>
+            
+            <div class="group-box">
+                <h3>🎯 We Have 4 GROUPS in Our Class!</h3>
+                <p>Each group has a special job to help the experiment work.</p>
+            </div>
+            
+            <h3>📋 Group Jobs</h3>
+            
+            <div class="roles-grid">
+                <div class="role-card">
+                    <h4>🧈 GROUP 1: Butter Team</h4>
+                    <p><strong>Job:</strong> Measure and put 2g of butter/wax on each spoon</p>
+                    <p><strong>Tools:</strong> Butter, kitchen scale, spoons</p>
+                    <p><strong>When:</strong> At the start of the experiment</p>
+                </div>
+                
+                <div class="role-card">
+                    <h4>⏱️ GROUP 2: Timer Team</h4>
+                    <p><strong>Job:</strong> Start stopwatch when spoons go in water, stop when butter melts</p>
+                    <p><strong>Tools:</strong> Stopwatches, timers</p>
+                    <p><strong>When:</strong> During the experiment</p>
+                </div>
+                
+                <div class="role-card">
+                    <h4>📝 GROUP 3: Recording Team</h4>
+                    <p><strong>Job:</strong> Record start time, stop time, and alert when 2 minutes pass</p>
+                    <p><strong>Tools:</strong> Data tables, pencils, watch</p>
+                    <p><strong>When:</strong> Throughout the experiment</p>
+                </div>
+                
+                <div class="role-card">
+                    <h4>🌡️ GROUP 4: Temperature Team</h4>
+                    <p><strong>Job:</strong> Check and record water temperature every 2 minutes</p>
+                    <p><strong>Tools:</strong> Thermometer, temperature log</p>
+                    <p><strong>When:</strong> Every 2 minutes during experiment</p>
+                </div>
+            </div>
+            
+            <div class="alert-box">
+                <strong>🔔 REMEMBER:</strong> All groups work TOGETHER! The Timer Team tells the Recording Team when to write. The Recording Team tells the Temperature Team when to check!
+            </div>
+            
+            <h3>📊 Team Data Tables</h3>
+            <p>Each group will have their own table to fill out!</p>
+        </div>
+        
+        <!-- TEACHER DEMONSTRATION -->
+        <div id="demo" class="section">
+            <h2>🎬 Teacher Demonstration</h2>
+            
+            <div class="teacher-demo-box">
+                <h3>👨‍🏫 Watch the Teacher First!</h3>
+                <p>Before you start, watch carefully as the teacher shows you how to do each step.</p>
+            </div>
+            
+            <h3>📺 Demonstration Steps</h3>
+            
+            <div class="demo-steps">
+                <div class="demo-step">
+                    <span class="icon">⚖️</span>
+                    <h4>Step 1: Measure Butter</h4>
+                    <p>Teacher shows how to use the scale to measure exactly 2g of butter</p>
+                </div>
+                
+                <div class="demo-step">
+                    <span class="icon">🧈</span>
+                    <h4>Step 2: Put Butter on Spoon</h4>
+                    <p>Teacher shows how to place butter at the end of each spoon</p>
+                </div>
+                
+                <div class="demo-step">
+                    <span class="icon">♨️</span>
+                    <h4>Step 3: Place Spoons in Water</h4>
+                    <p>Teacher shows how to carefully put spoons in hot water</p>
+                </div>
+                
+                <div class="demo-step">
+                    <span class="icon">▶️</span>
+                    <h4>Step 4: Start/Stop Timer</h4>
+                    <p>Teacher shows how to start timer when spoons go IN and stop when butter melts</p>
+                </div>
+                
+                <div class="demo-step">
+                    <span class="icon">📝</span>
+                    <h4>Step 5: Record Data</h4>
+                    <p>Teacher shows how to write the time in the table</p>
+                </div>
+                
+                <div class="demo-step">
+                    <span class="icon">🌡️</span>
+                    <h4>Step 6: Check Temperature</h4>
+                    <p>Teacher shows how to read the thermometer and record temperature</p>
+                </div>
+            </div>
+            
+            <div class="step" style="margin-top:20px;">
+                <div class="step-number">👀</div>
+                <div>
+                    <strong>Watch carefully!</strong> After the teacher demonstrates, YOU will do the same steps in your groups. Ask questions if you don't understand!
+                </div>
+            </div>
+        </div>
+        
+        <!-- SAFETY -->
+        <div id="safety" class="section">
+            <h2>⚠️ Safety First - Important!</h2>
+            
+            <div class="safety-box">
+                <h3>🛑 Follow These Rules:</h3>
+                <ol>
+                    <li><strong>Hot water is 60°C</strong> - It can burn! Stay back from the saucepan.</li>
+                    <li><strong>Teacher handles the hot water</strong> - Students observe from their seats, then assist with butter and timers only.</li>
+                    <li><strong>Wear safety goggles</strong> - Protect your eyes!</li>
+                    <li><strong>No touching hot items</strong> - Use the tools provided. Teacher uses heat gloves.</li>
+                    <li><strong>Keep workspace clean</strong> - Wipe up any spills.</li>
+                    <li><strong>Ask for help</strong> - If you're unsure about anything, ask the teacher!</li>
+                    <li><strong>Work in your group</strong> - Stay with your team assigned area.</li>
+                </ol>
+            </div>
+            
+            <h3>🧤 Safety Equipment</h3>
+            <div class="visual-instructions">
+                <div class="visual-step">
+                    <div class="pic">🥽</div>
+                    <p>Safety Goggles<br><strong>Everyone wears</strong></p>
+                </div>
+                <div class="visual-step">
+                    <div class="pic">🧤</div>
+                    <p>Heat Gloves<br><strong>Teacher only</strong></p>
+                </div>
+                <div class="visual-step">
+                    <div class="pic">📏</div>
+                    <p>Thermometer<br><strong>Temp Team</strong></p>
+                </div>
+                <div class="visual-step">
+                    <div class="pic">⏱️</div>
+                    <p>Stopwatch<br><strong>Timer Team</strong></p>
+                </div>
+            </div>
+            
+            <div class="warning">
+                <span>⚠️</span>
+                <strong>REMEMBER:</strong> Teacher handles hot water. Students help with butter, timers, and recording!
+            </div>
+        </div>
+        
+        <!-- EXPERIMENT -->
+        <div id="experiment" class="section">
+            <h2>🧪 The Heat Transfer Experiment - Guided Steps</h2>
+            
+            <h3>📦 Materials for Each Group</h3>
+            <div class="materials-box">
+                <ul>
+                    <li><span class="emoji">🥄</span> 3 Metal Spoons</li>
+                    <li><span class="emoji">🥄</span> 3 Wooden Spoons</li>
+                    <li><span class="emoji">🥄</span> 3 Plastic Spoons</li>
+                    <li><span class="emoji">🧈</span> Butter or Wax (2g each)</li>
+                    <li><span class="emoji">⚖️</span> Kitchen Scale</li>
+                    <li><span class="emoji">♨️</span> Hot Water (60°C) - Teacher's</li>
+                    <li><span class="emoji">🌡️</span> Thermometer</li>
+                    <li><span class="emoji">⏱️</span> Stopwatch/Timer</li>
+                </ul>
+            </div>
+            
+            <h3>📋 Experiment Steps - Let's Do This Together!</h3>
+            
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>
+                    <strong>Butter Team prepares the butter</strong>
+                    <div class="student-action">🧈 STUDENT JOB: Measure exactly 2g of butter using the scale. Put butter on the end of each spoon.</div>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>
+                    <strong>Teacher places spoons in hot water</strong>
+                    <div class="teacher-action">👨‍🏫 TEACHER JOB: Carefully put all spoons into the hot water at the same time.</div>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>
+                    <strong>Start the timers!</strong>
+                    <div class="student-action">⏱️ STUDENT JOB (Timer Team): Press START on your stopwatch the moment spoons go INTO the water!</div>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <div>
+                    <strong>Watch and wait!</strong>
+                    <div class="student-action">👀 ALL STUDENTS: Watch the butter carefully. Don't blink!</div>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">5</div>
+                <div>
+                    <strong>Stop the timers!</strong>
+                    <div class="student-action">⏱️ STUDENT JOB (Timer Team): Press STOP the moment you see the LAST bit of butter melt!</div>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">6</div>
+                <div>
+                    <strong>Record the time</strong>
+                    <div class="student-action">📝 STUDENT JOB (Recording Team): Write the time in your table. Tell Temperature Team: "2 minutes coming up!"</div>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">7</div>
+                <div>
+                    <strong>Check temperature every 2 minutes</strong>
+                    <div class="student-action">🌡️ STUDENT JOB (Temperature Team): Look at the thermometer. Write the temperature in your log every 2 minutes!</div>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">8</div>
+                <div>
+                    <strong>Try again!</strong>
+                    <div class="student-action">🔄 STUDENT JOB: Repeat steps 1-7 for Trial 2!</div>
+                </div>
+            </div>
+            
+            <h3>⏱️ Practice Your Timer Skills!</h3>
+            <div class="timer-display" id="timer">00:00</div>
+            <div style="text-align:center;">
+                <button class="btn btn-start" onclick="startTimer()">▶️ START</button>
+                <button class="btn" onclick="stopTimer()">⏸️ STOP</button>
+                <button class="btn btn-danger" onclick="resetTimer()">🔄 RESET</button>
+            </div>
+            
+            <div class="alert-box">
+                <strong>⏰ Timer Team Practice:</strong> Practice starting and stopping the timer before the real experiment! Make sure everyone in your group gets a turn!
+            </div>
+        </div>
+        
+        <!-- DATA RECORDING -->
+        <div id="data" class="section">
+            <h2>📊 Group Data Recording Sheets</h2>
+            
+            <div class="group-box">
+                <h3>👥 Each Group Has Their Own Table!</h3>
+            </div>
+            
+            <h3>🧈 Butter Team - Butter Preparation Log</h3>
+            <table class="data-table group-table">
+                <tr>
+                    <th>Spoon Type</th>
+                    <th>Butter Amount</th>
+                    <th>Ready? (✓)</th>
+                </tr>
+                <tr>
+                    <td>🥄 Metal Spoon</td>
+                    <td><input type="text" placeholder="2g" style="padding:8px; width:80px;"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>🥄 Wooden Spoon</td>
+                    <td><input type="text" placeholder="2g" style="padding:8px; width:80px;"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>🥄 Plastic Spoon</td>
+                    <td><input type="text" placeholder="2g" style="padding:8px; width:80px;"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+            </table>
+            
+            <h3>⏱️ Timer Team - Melt Time Record</h3>
+            <table class="data-table group-table">
+                <tr>
+                    <th>Material</th>
+                    <th>Trial 1 Start Time</th>
+                    <th>Trial 1 Stop Time</th>
+                    <th>Trial 1 Total</th>
+                    <th>Trial 2 Total</th>
+                    <th>Average</th>
+                </tr>
+                <tr>
+                    <td>🥄 Metal</td>
+                    <td><input type="text" placeholder="sec" style="padding:8px; width:70px;"></td>
+                    <td><input type="text" placeholder="sec" style="padding:8px; width:70px;"></td>
+                    <td></td>
+                    <td><input type="text" placeholder="sec" style="padding:8px; width:70px;"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>🥄 Wood</td>
+                    <td><input type="text" placeholder="sec" style="padding:8px; width:70px;"></td>
+                    <td><input type="text" placeholder="sec" style="padding:8px; width:70px;"></td>
+                    <td></td>
+                    <td><input type="text" placeholder="sec" style="padding:8px; width:70px;"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>🥄 Plastic</td>
+                    <td><input type="text" placeholder="sec" style="padding:8px; width:70px;"></td>
+                    <td><input type="text" placeholder="sec" style="padding:8px; width:70px;"></td>
+                    <td></td>
+                    <td><input type="text" placeholder="sec" style="padding:8px; width:70px;"></td>
+                    <td></td>
+                </tr>
+            </table>
+            
+            <h3>📝 Recording Team - Alert Log</h3>
+            <table class="data-table group-table">
+                <tr>
+                    <th>Alert Check</th>
+                    <th>Time</th>
+                    <th>Signal Given</th>
+                    <th>Who Notified</th>
+                </tr>
+                <tr>
+                    <td>🔔 2-minute alert</td>
+                    <td><input type="text" placeholder="time" style="padding:8px; width:80px;"></td>
+                    <td><input type="text" placeholder="signal" style="padding:8px; width:80px;"></td>
+                    <td><input type="text" placeholder="name" style="padding:8px; width:80px;"></td>
+                </tr>
+                <tr>
+                    <td>🔔 4-minute alert</td>
+                    <td><input type="text" placeholder="time" style="padding:8px; width:80px;"></td>
+                    <td><input type="text" placeholder="signal" style="padding:8px; width:80px;"></td>
+                    <td><input type="text" placeholder="name" style="padding:8px; width:80px;"></td>
+                </tr>
+                <tr>
+                    <td>🔔 6-minute alert</td>
+                    <td><input type="text" placeholder="time" style="padding:8px; width:80px;"></td>
+                    <td><input type="text" placeholder="signal" style="padding:8px; width:80px;"></td>
+                    <td><input type="text" placeholder="name" style="padding:8px; width:80px;"></td>
+                </tr>
+            </table>
+            
+            <h3>🌡️ Temperature Team - Temperature Log</h3>
+            <table class="data-table group-table">
+                <tr>
+                    <th>Time Check</th>
+                    <th>Water Temperature</th>
+                    <th>Recorded By</th>
+                </tr>
+                <tr>
+                    <td>Start (0 min)</td>
+                    <td><input type="text" placeholder="60°C" style="padding:8px; width:80px;"></td>
+                    <td><input type="text" placeholder="name" style="padding:8px; width:100px;"></td>
+                </tr>
+                <tr>
+                    <td>2 min</td>
+                    <td><input type="text" placeholder="°C" style="padding:8px; width:80px;"></td>
+                    <td><input type="text" placeholder="name" style="padding:8px; width:100px;"></td>
+                </tr>
+                <tr>
+                    <td>4 min</td>
+                    <td><input type="text" placeholder="°C" style="padding:8px; width:80px;"></td>
+                    <td><input type="text" placeholder="name" style="padding:8px; width:100px;"></td>
+                </tr>
+                <tr>
+                    <td>6 min</td>
+                    <td><input type="text" placeholder="°C" style="padding:8px; width:80px;"></td>
+                    <td><input type="text" placeholder="name" style="padding:8px; width:100px;"></td>
+                </tr>
+                <tr>
+                    <td>8 min</td>
+                    <td><input type="text" placeholder="°C" style="padding:8px; width:80px;"></td>
+                    <td><input type="text" placeholder="name" style="padding:8px; width:100px;"></td>
+                </tr>
+            </table>
+            
+            <div class="symbol-key">
+                <div class="symbol">🔥🔥🔥 = <strong>FAST</strong> (melts quick!)</div>
+                <div class="symbol">🔥🔥 = <strong>MEDIUM</strong> (takes some time)</div>
+                <div class="symbol">🔥 = <strong>SLOW</strong> (takes a long time)</div>
+            </div>
+        </div>
+        
+        <!-- SUPPORTS -->
+        <div id="supports" class="section">
+            <h2>♿ Supports for Everyone!</h2>
+            
+            <p style="font-size:1.2em; margin-bottom:20px;">We have THREE types of supports to help all students learn!</p>
+            
+            <div class="support-box">
+                <h3>🎯 Visual Supports (Things You Can SEE)</h3>
+                <div class="support-grid">
+                    <div class="support-card visual">
+                        <h4>📷 📷 Picture Cards</h4>
+                        <p>Look at the pictures to see what to do instead of reading!</p>
+                    </div>
+                    <div class="support-card visual">
+                        <h4>🖼️ 🖼️ Large Images</h4>
+                        <p>Big pictures on the board show each step!</p>
+                    </div>
+                    <div class="support-card visual">
+                        <h4>🎨 🎨 Color Coding</h4>
+                        <p>Each group has a color! Butter Team = Yellow, Timer Team = Blue, etc.</p>
+                    </div>
+                    <div class="support-card visual">
+                        <h4>📋 📋 Graphic Organizers</h4>
+                        <p>Visual sheets that show what comes first, second, third...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="support-box" style="background:#81ecec;">
+                <h3>🔊 Auditory Supports (Things You Can HEAR)</h3>
+                <div class="support-grid">
+                    <div class="support-card auditory">
+                        <h4>🔊 🔊 Read Aloud</h4>
+                        <p>Click the "Read This Page" button to hear the words!</p>
+                    </div>
+                    <div class="support-card auditory">
+                        <h4>📢 📢 Teacher Narration</h4>
+                        <p>Teacher explains each step OUT LOUD for everyone to hear!</p>
+                    </div>
+                    <div class="support-card auditory">
+                        <h4>🔔 🔔 Audio Alerts</h4>
+                        <p>Hear the sound when 2 minutes pass!</p>
+                    </div>
+                    <div class="support-card auditory">
+                        <h4>🎧 🎧 Verbal Instructions</h4>
+                        <p>All instructions are spoken, not just written!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="support-box" style="background:#ffeaa7; color:#2d3436;">
+                <h3>✋ Tactile Supports (Things You Can TOUCH)</h3>
+                <div class="support-grid">
+                    <div class="support-card tactile">
+                        <h4>🪵 🪵 Feel the Materials</h4>
+                        <p>Touch the spoons BEFORE the experiment to feel the difference!</p>
+                    </div>
+                    <div class="support-card tactile">
+                        <h4>📄 📄 Texture Cards</h4>
+                        <p>Feel cards that show what metal, wood, and plastic feel like!</p>
+                    </div>
+                    <div class="support-card tactile">
+                        <h4>🔲 🔲 3D Objects</h4>
+                        <p>Hold actual samples of each material!</p>
+                    </div>
+                    <div class="support-card tactile">
+                        <h4>✏️ ✏️ Trace the Words</h4>
+                        <p>Trace letters with your finger to learn vocabulary!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>✋ Feel the Materials! (Before We Start)</h3>
+            <div class="tactile-sample">
+                <div class="tactile-item metal">
+                    <div class="icon">🥄</div>
+                    <strong>Metal</strong>
+                    <p>Hard & Smooth</p>
+                    <p>Cold to touch</p>
+                </div>
+                <div class="tactile-item wood">
+                    <div class="icon">🪵</div>
+                    <strong>Wood</strong>
+                    <p>Rough texture</p>
+                    <p>Warm to touch</p>
+                </div>
+                <div class="tactile-item plastic">
+                    <div class="icon">🥣</div>
+                    <strong>Plastic</strong>
+                    <p>Smooth but bendy</p>
+                    <p>Cold to touch</p>
+                </div>
+            </div>
+            
+            <h3>♿ Specific Accommodations</h3>
+            
+            <div class="accommodations" style="background:#00cec9;">
+                <h3>♿ For Student in Wheelchair:</h3>
+                <ul>
+                    <li>📏 <strong>Adjustable table</strong> - Special height for your chair</li>
+                    <li>👀 <strong>Front row seat</strong> - Best view of demonstration</li>
+                    <li>✋ <strong>Extended tools</strong> - Long-handle spoon holder for Butter Team</li>
+                    <li>📝 <strong>Recording role</strong> - Join Recording Team - great job for any position!</li>
+                </ul>
+            </div>
+            
+            <div class="accommodations" style="background:#fdcb6e; color:#2d3436;">
+                <h3>🌈 For Student with ASD (Autism):</h3>
+                <ul>
+                    <li>📅 <strong>Visual schedule</strong> - See what we're doing step by step</li>
+                    <li>🎧 <strong>Quiet space</strong> - Headphones available for quiet time</li>
+                    <li>⏰ <strong>Break times</strong> - Movement breaks when needed</li>
+                    <li>📋 <strong>Same routine</strong> - Same activities each class</li>
+                    <li>👤 <strong>Preferred role</strong> - Can choose which group to join!</li>
+                </ul>
+            </div>
+            
+            <div class="accommodations" style="background:#e17055;">
+                <h3>👁️ For Student with Visual Challenges:</h3>
+                <ul>
+                    <li>🔊 <strong>Read Aloud</strong> - Click the speaker button to hear everything!</li>
+                    <li>🔍 <strong>Large print</strong> - Big text and pictures</li>
+                    <li>🔊 <strong>Audio descriptions</strong> - Everything read aloud</li>
+                    <li>✋ <strong>Feel the materials</strong> - Touch the spoons to feel the difference</li>
+                    <li>👓 <strong>Front seat</strong> - Near the screen and teacher</li>
+                    <li>📺 <strong>Magnifier</strong> - Available if needed</li>
+                </ul>
+            </div>
+            
+            <div class="info-box" style="margin-top:30px;">
+                <strong>💡 Remember:</strong> Everyone participates! All students are important Heat Detectives! Every role is important for our experiment!
+            </div>
+        </div>
+        
+        <footer>
+            <p>🕵️ Heat Detective Mission - Guided Classroom Activity - Grade 4 Science 🔥</p>
+            <p>31 Students + 4 Groups = One Amazing Science Experiment!</p>
+        </footer>
+    </div>
+    
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+        
+        // Timer variables
+        let timerInterval;
+        let seconds = 0;
+        let running = false;
+        
+        function startTimer() {
+            if (!running) {
+                running = true;
+                timerInterval = setInterval(function() {
+                    seconds++;
+                    updateTimerDisplay();
+                }, 1000);
+            }
+        }
+        
+        function stopTimer() {
+            running = false;
+            clearInterval(timerInterval);
+        }
+        
+        function resetTimer() {
+            stopTimer();
+            seconds = 0;
+            updateTimerDisplay();
+        }
+        
+        function updateTimerDisplay() {
+            let mins = Math.floor(seconds / 60);
+            let secs = seconds % 60;
+            document.getElementById('timer').textContent = 
+                (mins < 10 ? '0' : '') + mins + ':' + 
+                (secs < 10 ? '0' : '') + secs;
+        }
+        
+        // Text to Speech for Read-Aloud
+        let speechSynthesis = window.speechSynthesis;
+        let currentUtterance = null;
+        
+        function speakText(sectionId) {
+            if (speechSynthesis.speaking) {
+                speechSynthesis.cancel();
+            }
+            
+            const section = document.getElementById(sectionId);
+            const text = section.innerText;
+            
+            currentUtterance = new SpeechSynthesisUtterance(text);
+            currentUtterance.rate = 0.9;
+            currentUtterance.pitch = 1;
+            
+            speechSynthesis.speak(currentUtterance);
+        }
+        
+        function speakSection(sectionId) {
+            speakText(sectionId);
+        }
+        
+        function stopSpeaking() {
+            if (speechSynthesis.speaking) {
+                speechSynthesis.cancel();
+            }
+        }
+    </script>
+</body>
+</html>
